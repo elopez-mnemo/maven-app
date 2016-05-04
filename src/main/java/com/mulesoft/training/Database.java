@@ -6,6 +6,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import javolution.lang.MathLib;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
@@ -16,6 +18,7 @@ public class Database implements InitializingBean {
     public void afterPropertiesSet() throws Exception {
         String dbURL = "jdbc:derby:memory:muleEmbeddedDB;create=true";
         Connection conn = null;
+        
         try {
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver").newInstance();
             conn = DriverManager.getConnection(dbURL);
